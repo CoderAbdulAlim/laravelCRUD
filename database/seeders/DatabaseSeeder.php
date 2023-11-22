@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Post;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,5 +25,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Al Razi',
             'email' => 'daleswari24@gmail.com',
         ]);
+
+        Post::factory()->count(100)->create();
     }
 }

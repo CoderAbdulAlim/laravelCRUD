@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserPostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class)->name('home');
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+Route::get('/users/{user}/posts', UserPostController::class)->name('users.user.posts');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
